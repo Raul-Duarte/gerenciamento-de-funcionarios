@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import api from '../../services/api'
+
 import './styles.css'
 
 import {
@@ -7,36 +10,49 @@ import {
 } from 'react-bootstrap';
 
 function Lista() {
+  const [funcionario, setFuncionario] = useState([])
+
+  useEffect(()=>{
+    async function loadFuncionario(){
+      const response = await api.get('funcionario')
+
+      const data = response.data
+      setFuncionario(data)
+    }
+    loadFuncionario()
+  },[])
+
+
 
   return (
     <Container className="containerLista">
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Cargo</th>
+            <th>Editar</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
+
+        {funcionario.map(funcionario=>(
+  
+      
           <tr>
-            <td>1</td>
-            <td>asdas</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            <td>{funcionario.id}</td>
+            <td>{funcionario.name}</td>
+            <td>{funcionario.email}</td>
+            <td>Cargo tal</td>
+            <td>Cargo tal</td>
+            <td>Cargo tal</td>
+          </tr>  
+
+          ))}
+
         </tbody>
       </Table>
     </Container>

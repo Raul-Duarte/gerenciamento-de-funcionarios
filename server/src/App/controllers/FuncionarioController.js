@@ -72,7 +72,13 @@ class FuncionarioController {
             email
         })
     }
+
+    async get(req, res){
+
+        const funcionarioAll = await Funcionario.findAll()
+        return res.json(funcionarioAll)
+    }
 }
 
 
-export default new FuncionarioController
+export default new FuncionarioController()
