@@ -16,11 +16,6 @@ export default function funcionario(state = INITIAL_STATE, action) {
                 draft.email = action.payload.email;
                 break;
             }
-            case '@funcionario/SUCCESS_FUNCIONARIO': {
-                draft.name = action.payload.name;
-                draft.email = action.payload.email;
-                break;
-            }
 
             default: {
                 return state

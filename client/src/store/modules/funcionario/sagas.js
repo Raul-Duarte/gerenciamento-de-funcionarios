@@ -1,24 +1,18 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects'
+import { takeLatest, call, all } from 'redux-saga/effects'
 
 import api from '../../../services/api'
+import history from '../../../services/history'
 
-import { funcionarioInSuccess } from './actions'
-
-function* funcionarioCreate({payload}) {
+export function* funcionarioCreate({payload}) {
     try {
-        const { name, email } = payload
 
-        const funcionarios = yield call(api.post, 'funcionario',{
+        const { name, email } = payload
+ 
+        yield call(api.post, 'funcionario',{
             name,
             email,
         })
-
-        // const { name, email } = funcionarios.data
-
-        console.log(funcionarios)
-
-        yield put(funcionarioInSuccess(name,email))
-
+        history.push('/')
 
     } catch (err) {
 

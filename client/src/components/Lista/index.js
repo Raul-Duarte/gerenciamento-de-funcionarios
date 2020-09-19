@@ -42,7 +42,7 @@ function Lista() {
         {funcionario.map(funcionario=>(
   
       
-          <tr>
+          <tr key={funcionario.id}>
             <td>{funcionario.id}</td>
             <td>{funcionario.name}</td>
             <td>{funcionario.email}</td>
