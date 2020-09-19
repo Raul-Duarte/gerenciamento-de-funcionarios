@@ -13,7 +13,11 @@ routes.use((req,res,next)=>{
   routes.use(cors())
   next()
 })
-routes.post('/funcionario',FuncionarioController.store)
+
+routes.post('/cargo',CargoController.store)
+
+routes.post('/cargo/:cargo_id/funcionario',FuncionarioController.store)
+
 routes.put('/funcionario/:id',FuncionarioController.update)
 routes.get('/funcionario',FuncionarioController.get)
 

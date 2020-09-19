@@ -10,14 +10,29 @@ module.exports = {
         primaryKey: true,
 
       },
+      cargo_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references : {model:'cargos', key:'id'},
+        onUpdate:'CASCADE',
+        onDelete:'CASCADE',
+
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      surname: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+      }, 
+      date: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      }, 
+      salary: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,

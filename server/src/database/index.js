@@ -3,17 +3,12 @@ import Funcionario from '../App/models/Funcionario'
 import Cargo from '../App/models/Cargo'
 import databaseConfig from '../config/database'
 
-const models = [Funcionario,Cargo]
+const connection = new Sequelize(databaseConfig)
 
-class Database {
-    constructor(){
-        this.init()
-    }
-    init(){
-        this.connection = new Sequelize(databaseConfig)
-        models.map(model=> model.init(this.connection))
-    }
-}
+Cargo.init(connection)
+Funcionario.init(connection)
+
+Funcionario.associate(connection.models)
 
 
-export default new Database
+module.exports = connection

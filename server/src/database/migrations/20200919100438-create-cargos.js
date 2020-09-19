@@ -10,14 +10,6 @@ module.exports = {
         primaryKey: true,
 
       },
-      funcionario_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references : {model:'funcionarios', key:'id'},
-        onUpdate:'CASCADE',
-        onDelete:'CASCADE',
-
-      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,

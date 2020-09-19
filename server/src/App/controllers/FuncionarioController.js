@@ -1,37 +1,31 @@
-import * as Yup from 'yup'
+// import * as Yup from 'yup'
 import Funcionario from '../models/Funcionario'
+import Cargo from '../models/Cargo'
 
 
 class FuncionarioController {
     async store(req, res) {
 
-        const schema = Yup.object().shape({
-            name: Yup.string().required(),
-            email: Yup.string().email().required(),
+        const { cargo_id } = req.params
 
-        });
+        const { name, surname, date, salary } = req.body
 
-        if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: "Erro no cadastro" })
+        const cargoExists = await Cargo.findByPk(cargo_id)
+
+        if (!cargoExists) {
+            return res.status(400).json({ error: 'Cargo não existe' })
         }
 
-        const funcionarioExists = await Funcionario.findOne({
-            where: {
-                email: req.body.email
-            }
-        })
-
-        if (funcionarioExists) {
-            return res.status(400).json({ error: 'Funcionario existe' })
-        }
-
-        const { id, name, email } = await Funcionario.create(req.body)
-
-        return res.json({
-            id,
+        const funcionario = await Funcionario.create({
             name,
-            email
+            surname,
+            date,
+            salary,
+            cargo_id
+
         })
+
+        return res.json(funcionario)
 
     }
 
@@ -73,7 +67,7 @@ class FuncionarioController {
         })
     }
 
-    async get(req, res){
+    async get(req, res) {
 
         const funcionarioAll = await Funcionario.findAll()
         return res.json(funcionarioAll)

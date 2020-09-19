@@ -9,10 +9,6 @@ class Cargo extends Model {
             sequelize
         })
     }
-
-    static associate(models) {
-        this.belongsTo()
-    }
 }
 
 export default Cargo
