@@ -17,6 +17,7 @@ function Lista() {
       const response = await api.get('funcionario')
 
       const data = response.data
+      console.log(data)
       setFuncionario(data)
     }
     loadFuncionario()
@@ -26,15 +27,18 @@ function Lista() {
 
   return (
     <Container className="containerLista">
+          <h1>Lista de Funcionarios</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Email</th>
+            <th>Sobrenome</th>
+            <th>Data de Nascimento</th>
+            <th>Salário</th>
             <th>Cargo</th>
-            <th>Editar</th>
             <th>Excluir</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -45,10 +49,12 @@ function Lista() {
           <tr key={funcionario.id}>
             <td>{funcionario.id}</td>
             <td>{funcionario.name}</td>
-            <td>{funcionario.email}</td>
-            <td>Cargo tal</td>
-            <td>Cargo tal</td>
-            <td>Cargo tal</td>
+            <td>{funcionario.surname}</td>
+            <td>{funcionario.date}</td>
+            <td>{funcionario.salary}</td>
+            <td>{funcionario.cargo_id}</td>
+            <td>X</td>
+            <td>/</td>
           </tr>  
 
           ))}
