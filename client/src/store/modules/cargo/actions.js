@@ -4,3 +4,16 @@ export function createCargo (name) {
         payload:{name},
     }
 }
+
+export function getAllCargo () {
+    return{
+        type:'@cargo/GET_ALL_CARGO',
+    }
+}
+
+export function AllCargo (id, name) {
+    return{
+        type:'@cargo/ALL_CARGO',
+        payload:{id,name},
+    }
+}

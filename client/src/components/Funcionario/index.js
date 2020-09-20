@@ -17,8 +17,8 @@ import {
 function Funcionario() {
     const {register,handleSubmit} = useForm()
     const dispatch = useDispatch()
-    const onSubmit = ({name,email}) => {
-        dispatch(createFuncionario(name, email))
+    const onSubmit = ({name,surname,date, salary,cargo_id}) => {
+        dispatch(createFuncionario(name,surname,date, salary,cargo_id))
     }
 
     return (
@@ -32,24 +32,24 @@ function Funcionario() {
                     </Col>
                     <Col>
                         <Form.Label>Sobrenome:</Form.Label>
-                        <Form.Control ref={register} name="email" />
+                        <Form.Control ref={register} name="surname" />
                     </Col>
 
                     <Col>
                         <Form.Label>Data de Nascimento:</Form.Label>
-                        <Form.Control ref={register} name="email" />
+                        <Form.Control ref={register} name="date" />
                     </Col>
                     <Col>
                         <Form.Label>Salario:</Form.Label>
-                        <Form.Control ref={register} name="email" />
+                        <Form.Control ref={register} name="salary" />
                     </Col>
 
 
                     <Col>
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Cargo</Form.Label>
-                            <Form.Control as="select" defaultValue="Choose...">
-                                <option>Cargo...</option>
+                            <Form.Control ref={register} name="cargo_id" as="select" defaultValue="Choose...">
+                                <option id="1" name="1">1</option>
                                 <option>...</option>
                             </Form.Control>
                         </Form.Group>

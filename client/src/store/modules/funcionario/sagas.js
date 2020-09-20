@@ -6,11 +6,13 @@ import history from '../../../services/history'
 export function* funcionarioCreate({payload}) {
     try {
 
-        const { name, email } = payload
+        const { name, surname, date, salary,cargo_id } = payload
  
-        yield call(api.post, 'funcionario',{
+        yield call(api.post, 'cargo/'+cargo_id+'/funcionario',{
             name,
-            email,
+            surname,
+            date,
+            salary,
         })
         history.push('/')
 

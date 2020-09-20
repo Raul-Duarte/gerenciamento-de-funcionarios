@@ -1,7 +1,13 @@
-export function createFuncionario (name, email) {
+export function createFuncionario (name, surname, date,salary,cargo_id ) {
     return{
         type:'@funcionario/CREATE_FUNCIONARIO',
-        payload:{name, email},
+        payload:{
+            name, 
+            surname,
+            date,
+            salary,
+            cargo_id
+        },
     }
 }
 
