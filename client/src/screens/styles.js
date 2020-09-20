@@ -2,9 +2,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  /* background: linear-gradient(#FFF, #03a696); */
   height:100%;
-  background: linear-gradient(#FFF, #03a696);
-  /* padding:0 250px; */
+  /* padding-bottom: 500px; */
 `;
 
 export const Content = styled.div`

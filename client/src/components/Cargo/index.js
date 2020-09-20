@@ -1,15 +1,25 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
+import {useDispatch} from 'react-redux'
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
+import {createCargo} from '../../store/modules/cargo/actions'
 import './styles.css'
 
 function Cargo() {
+    const {register,handleSubmit} = useForm()
+    const dispatch = useDispatch()
+    const onSubmit = ({name}) => {
+        console.log(name)
+        dispatch(createCargo(name))
+    }
+
     return (
         <Container className="containerCargo">
-            <Form >
+            <Form onSubmit={handleSubmit(onSubmit)} >
                 <Row  >
                     <Col className="colCargo">
                         <Form.Label>Nome:</Form.Label>
-                        <Form.Control name="caargo" />
+                        <Form.Control ref={register} name="name" />
                     </Col>
                 </Row>
                 <Button variant="primary" type="submit">

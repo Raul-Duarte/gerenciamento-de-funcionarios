@@ -6,7 +6,8 @@ import './styles.css'
 
 import {
   Container,
-  Table
+  Table,
+  Button,
 } from 'react-bootstrap';
 
 function Lista() {
@@ -17,12 +18,15 @@ function Lista() {
       const response = await api.get('funcionario')
 
       const data = response.data
-      console.log(data)
+      // console.log(data)
       setFuncionario(data)
     }
     loadFuncionario()
   },[])
 
+  const editFuncionario = (data) =>{
+   console.log(data)
+  }
 
 
   return (
@@ -53,8 +57,16 @@ function Lista() {
             <td>{funcionario.date}</td>
             <td>{funcionario.salary}</td>
             <td>{funcionario.cargo_id}</td>
-            <td>X</td>
-            <td>/</td>
+            <td>
+            <Button variant="primary" type="submit" onChange={editFuncionario}>
+                    Submit
+                 </Button>
+            </td>
+            <td>
+            <Button variant="danger" type="submit">
+                    Excluir
+                 </Button>
+            </td>
           </tr>  
 
           ))}
