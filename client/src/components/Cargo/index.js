@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useForm } from "react-hook-form";
 import {useDispatch} from 'react-redux'
 import { Container, Form, Button, Col, Row } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import {createCargo} from '../../store/modules/cargo/actions'
 import './styles.css'
 
 function Cargo() {
+    
     const {register,handleSubmit} = useForm()
     const dispatch = useDispatch()
     const onSubmit = ({name}) => {

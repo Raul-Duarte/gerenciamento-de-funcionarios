@@ -49,6 +49,7 @@ function ListaCargo() {
           <tr key={cargo.id}>
             <td>{cargo.id}</td>
             <td>{cargo.name}</td>
+
             <td>
             <Button variant="primary" type="submit" onChange={editcargo}>
                     Submit

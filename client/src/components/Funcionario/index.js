@@ -49,7 +49,7 @@ function Funcionario() {
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Cargo</Form.Label>
                             <Form.Control ref={register} name="cargo_id" as="select" defaultValue="Choose...">
-                                <option id="1" name="1">1</option>
+                                <option value="1">Vendeddor</option>
                                 <option>...</option>
                             </Form.Control>
                         </Form.Group>
