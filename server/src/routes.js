@@ -15,11 +15,12 @@ routes.use((req,res,next)=>{
 })
 
 routes.post('/cargo',CargoController.store)
+routes.get('/cargo',CargoController.get)
 
 routes.post('/cargo/:cargo_id/funcionario',FuncionarioController.store)
-
 routes.put('/funcionario/:id',FuncionarioController.update)
 routes.get('/funcionario',FuncionarioController.get)
+routes.delete('/funcionario/:id',FuncionarioController.delete)
 
 // routes.post('/cargo',CargoController.store)
 

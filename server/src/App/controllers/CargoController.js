@@ -71,11 +71,11 @@ class CargoController {
     //     })
     // }
 
-    // async get(req, res){
+    async get(req, res){
 
-    //     const funcionarioAll = await Funcionario.findAll()
-    //     return res.json(funcionarioAll)
-    // }
+        const cargoAll = await Cargo.findAll()
+        return res.json(cargoAll)
+    }
 }
 
 

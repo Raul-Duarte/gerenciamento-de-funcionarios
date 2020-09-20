@@ -31,40 +31,35 @@ class FuncionarioController {
 
     async update(req, res) {
 
-        const schema = Yup.object().shape({
-            name: Yup.string(),
-            email: Yup.string().email(),
+        // const schema = Yup.object().shape({
+        //     name: Yup.string(),
 
-        });
+        // });
 
-        if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: "Erro ao fzer alteração" })
-        }
+        // if (!(await schema.isValid(req.body))) {
+        //     return res.status(400).json({ error: "Erro ao fzer alteração" })
+        // }
 
-        const { email } = req.body
+        // const { name, surname, date, salary } = req.body
         const id = req.params.id;
 
         const funcionario = await Funcionario.findByPk(id)
 
-        if (email != funcionario.email) {
-            const funcionarioExists = await Funcionario.findOne({
-                where: {
-                    email
-                }
-            })
+        // if (name != funcionario.name) {
+        //     const funcionarioExists = await Funcionario.findOne({
+        //         where: {
+        //             name
+        //         }
+        //     })
 
-            if (funcionarioExists) {
-                return res.status(400).json({ error: 'Funcionario existe' })
-            }
-        }
+        //     if (funcionarioExists) {
+        //         return res.status(400).json({ error: 'Funcionario existe' })
+        //     }
+        // }
 
-        const { name } = await funcionario.update(req.body)
+        const func = await funcionario.update(req.body)
 
-        return res.json({
-            id,
-            name,
-            email
-        })
+        return res.json(func)
     }
 
     async get(req, res) {
@@ -72,6 +67,17 @@ class FuncionarioController {
         const funcionarioAll = await Funcionario.findAll()
         return res.json(funcionarioAll)
     }
+
+    async delete(req, res) {
+        const id = req.params.id;
+
+        const funcionarioDelete = await Funcionario.findByPk(id)
+        
+        await funcionarioDelete.destroy()
+        // await funcionario.removeFuncionario(funcionarioDelete)
+        return res.json()
+    }
+
 }
 
 
