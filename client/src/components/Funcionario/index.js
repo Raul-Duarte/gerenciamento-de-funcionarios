@@ -33,7 +33,7 @@ function Funcionario() {
 
     return (
         <Container className="containerFuncionario">
-            <h1>Cadastro de Funcionario</h1>
+            <h1>Cadastro de Funcionário</h1>
             <Form onSubmit={handleSubmit(onSubmit)} >
                 <Row >
                     <Col>
