@@ -30,7 +30,7 @@ function Lista() {
 
   return (
     <Container className="containerLista">
-      <h1>Lista de Funcionarios</h1>
+      <h1>Lista de Funcionários</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
