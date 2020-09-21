@@ -20,15 +20,13 @@ Then run these from your command line:
 ```bash
 $ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 ```
-
+### Client
 ```bash
 $ cd gerenciamento-de-funcionarios/client
-
 $ npm install
-
 $ npm start
 ```
-
+### Server
 ```bash
 $ cd ../server
 $ npm install 
