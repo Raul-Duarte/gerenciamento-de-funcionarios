@@ -71,7 +71,7 @@ class CargoController {
     //     })
     // }
 
-    async get(req, res){
+    async get(req, res) {
 
         const cargoAll = await Cargo.findAll()
         return res.json(cargoAll)

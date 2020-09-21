@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux'
 import api from '../../services/api'
-
-import {deleteFuncionario} from '../../store/modules/funcionario/actions'
 
 import './styles.css'
 
@@ -15,32 +12,25 @@ import {
 function Lista() {
   const [funcionario, setFuncionario] = useState([])
 
-  const dispatch = useDispatch()
-
-  useEffect(()=>{
-    async function loadFuncionario(){
+  useEffect(() => {
+    async function loadFuncionario() {
       const response = await api.get('funcionario')
-
       const data = response.data
       setFuncionario(data)
     }
     loadFuncionario()
-  },[])
+  }, [])
 
-  // const editFuncionario = (data) =>{
-  //  console.log(data)
-  // }
-
-
-
-function deletefun (data){
- console.log(data)
-}
-
+  function editFun() {
+    //em desenvolvimento
+  }
+  function deletefun() {
+    //em desenvolvimento
+  }
 
   return (
     <Container className="containerLista">
-          <h1>Lista de Funcionarios</h1>
+      <h1>Lista de Funcionarios</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -55,31 +45,26 @@ function deletefun (data){
           </tr>
         </thead>
         <tbody>
-
-        {funcionario.map(funcionario=>(
-  
-      
-          <tr key={funcionario.id}>
-            <td>{funcionario.id}</td>
-            <td>{funcionario.name}</td>
-            <td>{funcionario.surname}</td>
-            <td>{funcionario.date}</td>
-            <td>{funcionario.salary}</td>
-            <td>{funcionario.cargo_id}</td>
-            <td>
-            <Button variant="primary" type="submit" >
-                    Submit
+          {funcionario.map(funcionario => (
+            <tr key={funcionario.id}>
+              <td>{funcionario.id}</td>
+              <td>{funcionario.name}</td>
+              <td>{funcionario.surname}</td>
+              <td>{funcionario.date}</td>
+              <td>{funcionario.salary}</td>
+              <td>{funcionario.cargo_id}</td>
+              <td>
+                <Button variant="success" type="submit" onClick={editFun} >
+                  Editar
+                </Button>
+              </td>
+              <td>
+                <Button variant="danger" type="submit" onClick={deletefun} >
+                  Excluir
                  </Button>
-            </td>
-            <td>
-            <Button variant="danger" type="submit" onClick={deletefun} >
-                    Excluir
-                 </Button>
-            </td>
-          </tr>  
-
+              </td>
+            </tr>
           ))}
-
         </tbody>
       </Table>
     </Container>

@@ -2,10 +2,7 @@ import produce from 'immer'
 
 
 const INITIAL_STATE = {
-    id:'',
     name:'',
-
-
 }
 
 export default function cargo(state = INITIAL_STATE, action) {
