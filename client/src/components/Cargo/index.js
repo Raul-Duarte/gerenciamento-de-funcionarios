@@ -15,6 +15,7 @@ function Cargo() {
 
     return (
         <Container className="containerCargo">
+            <h1>Cadastro de Cargo</h1>
             <Form onSubmit={handleSubmit(onSubmit)} >
                 <Row  >
                     <Col className="colCargo">
