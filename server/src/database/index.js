@@ -9,6 +9,7 @@ Cargo.init(connection)
 Funcionario.init(connection)
 
 Funcionario.associate(connection.models)
+Cargo.associate(connection.models)
 
 
 module.exports = connection

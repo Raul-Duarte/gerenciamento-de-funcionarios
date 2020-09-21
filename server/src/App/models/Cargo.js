@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize'
-
 class Cargo extends Model {
     static init(sequelize) {
         super.init({
@@ -8,6 +7,9 @@ class Cargo extends Model {
         },{
             sequelize
         })
+    }
+    static associate(models){
+        this.hasMany(models.Funcionario,{foreignKey:'cargo_id', as:'cargos'})
     }
 }
 

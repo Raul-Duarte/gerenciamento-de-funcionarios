@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
+import {useDispatch} from 'react-redux'
 import api from '../../services/api'
+
+import {deleteFuncionario} from '../../store/modules/funcionario/actions'
 
 import './styles.css'
 
@@ -13,20 +15,27 @@ import {
 function Lista() {
   const [funcionario, setFuncionario] = useState([])
 
+  const dispatch = useDispatch()
+
   useEffect(()=>{
     async function loadFuncionario(){
       const response = await api.get('funcionario')
 
       const data = response.data
-      // console.log(data)
       setFuncionario(data)
     }
     loadFuncionario()
   },[])
 
-  const editFuncionario = (data) =>{
-   console.log(data)
-  }
+  // const editFuncionario = (data) =>{
+  //  console.log(data)
+  // }
+
+
+
+function deletefun (data){
+ console.log(data)
+}
 
 
   return (
@@ -58,12 +67,12 @@ function Lista() {
             <td>{funcionario.salary}</td>
             <td>{funcionario.cargo_id}</td>
             <td>
-            <Button variant="primary" type="submit" onChange={editFuncionario}>
+            <Button variant="primary" type="submit" >
                     Submit
                  </Button>
             </td>
             <td>
-            <Button variant="danger" type="submit">
+            <Button variant="danger" type="submit" onClick={deletefun} >
                     Excluir
                  </Button>
             </td>

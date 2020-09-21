@@ -8,8 +8,6 @@ export function* cargoCreate({ payload }) {
 
         const { name } = payload
 
-        console.log(name)
-
         yield call(api.post, 'cargo', {
             name,
         })
@@ -27,7 +25,7 @@ export function* cargoGetAll() {
     try {
 
      const {id, name} =  yield call(api.get, 'cargo')
-        console.log("Onome do cargo é: "+name)
+        
      yield put(AllCargo(id,name))
 
         history.push('/')

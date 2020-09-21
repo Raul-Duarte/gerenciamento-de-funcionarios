@@ -24,6 +24,25 @@ export function* funcionarioCreate({payload}) {
     }
 }
 
+export function* funcionarioDelete({payload}) {
+    try {
+
+        const { id } = payload
+ 
+        yield call(api.delete, '/funcionario'+id)
+        history.push('/')
+
+    } catch (err) {
+
+        console.log("erro no delete")
+
+        // yield put(singFailure())
+    }
+}
+
+
+
 export default all([
     takeLatest('@funcionario/CREATE_FUNCIONARIO', funcionarioCreate),
+    takeLatest('@funcionario/DELETE_FUNCIONARIO', funcionarioDelete),
 ])

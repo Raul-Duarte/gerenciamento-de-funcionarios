@@ -4,15 +4,25 @@ import Cargo from '../models/Cargo'
 
 
 class FuncionarioController {
+    async index (req, res){
+        const { cargo_id } = req.params
+        const funcionario = await Cargo.findByPk(cargo_id,{
+            include:{
+                association : 'cargos'
+            }
+        })
+        return res.json(funcionario)
+    }
+
     async store(req, res) {
 
         const { cargo_id } = req.params
 
         const { name, surname, date, salary } = req.body
 
-        const cargoExists = await Cargo.findByPk(cargo_id)
+        const cargo = await Cargo.findByPk(cargo_id)
 
-        if (!cargoExists) {
+        if (!cargo) {
             return res.status(400).json({ error: 'Cargo não existe' })
         }
 
